@@ -32,7 +32,10 @@
 
 
         function iniciarWebSocket() {
-            socket = new WebSocket("ws://localhost:8080/mywebsocket");
+           // var port = 8082;// window.location.port; // Obtiene el puerto actual del proyecto
+           // var host = "localhost";//window.location.hostname; // Obtiene el host actual del proyecto
+           // var url = `ws://${host}:${port}/mywebsocket`; // Crea la URL WebSocket
+           socket = new WebSocket("ws://localhost:8082/mywebsocket");
 
             socket.onopen = function (event) {
                 console.log("WebSocket connection opened.");

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Http;
 using WebSocket.Controllers;
 using WebSocketSharp.Server;
@@ -22,11 +23,8 @@ namespace WebSocketChat
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            var wssv = new WebSocketServer("ws://localhost:8080");
-            wssv.AddWebSocketService<MyWebSocketHandler>("/mywebsocket");
-            wssv.Start();
-
            
+
 
         }
     }
