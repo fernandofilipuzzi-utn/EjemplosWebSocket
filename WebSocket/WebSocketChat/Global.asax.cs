@@ -20,17 +20,7 @@ namespace WebSocketChat
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            /*
-           var wssv = new WebSocketServer("ws://localhost:8080");
-           wssv.AddWebSocketService<MyWebSocketHandler>("/mywebsocket");
-           wssv.Start();
-           */
-            /*
-            var app = (HttpApplication)source;
-            var uriObject = app.Context.Request.Url;
-            //app.Context.Request.Url.OriginalString
-            */
+                       
             // Code that runs on register routes
             int port = 8082;// HttpContext.Current.Request.Url.Port; // Obtiene el puerto actual del proyecto
             string host = "localhost";// HttpContext.Current.Request.Url.Host; // Obtiene el host actual del proyecto
