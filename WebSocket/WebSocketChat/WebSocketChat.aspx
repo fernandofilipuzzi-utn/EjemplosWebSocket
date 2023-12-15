@@ -1,31 +1,34 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master"  AutoEventWireup="true" CodeBehind="WebSocketChat.aspx.cs" Inherits="WebSocketChat.WebSocketChat" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="WebSocketChat.aspx.cs" Inherits="WebSocketChat.WebSocketChat" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+   
+    <div class="body-content">
 
-    <div class="jumbotron">
-        <h2>Probando websocket para un chat</h2>
-        Abrir dos navegadores y probar
+        <div class="jumbotron">
+            <h2>Probando websocket para un chat</h2>
+            <p class="lead">Abrir dos navegadores y probar.</p>
+        </div>
+
+        <div class="container">
+
+            <div class="col  p-3 mb-3">
+                <div class="form-group text-center p-3 mb-3" style="background-color: #d6e1ed;">
+                    <label for="tbRecibidos">Mensajes recibidos:</label>
+                    <asp:TextBox ID="tbRecibidos" CssClass="form-control" Style="width: 100%; max-width: none; text-align: left;" placeholder="Mensajes a recibir." TextMode="MultiLine" Rows="10" Enabled="false" runat="server" />
+                </div>
+
+                <div class="form-group  text-center p-3 mb-3" style="background-color: #d6e1ed;">
+                    <label class="col-form-label" for="tbEnviados">Mensajes enviados:</label>
+                    <asp:TextBox ID="tbEnviados" CssClass="form-control" Style="width: 100%; max-width: none; text-align: left;" TextMode="MultiLine" Rows="10" placeholder="Ingrese el mensaje a enviar." runat="server" />
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-primary" id="btnEnviar"><i class="fa fa-send"></i>Enviar</button>
+                </div>
+            </div>
+        </div>
+
     </div>
-
-    <div class="container body-content text-center">
-
-        <div class="form-group text-center">
-            <label for="tbRecibidos">Mensajes recibidos:</label>
-            <asp:TextBox ID="tbRecibidos" CssClass="form-control" Style="width: 100%; max-width: none; text-align: center;" placeholder="Mensajes a recibir."
-                TextMode="MultiLine" Enabled="false" runat="server" />
-        </div>
-
-        <div class="form-group  text-center">
-            <label for="tbEnviados">Mensajes enviados:</label>
-            <asp:TextBox ID="tbEnviados" CssClass="form-control" Style="width: 100%; max-width: none; text-align: center;" TextMode="MultiLine" placeholder="Ingrese el mensaje a enviar."
-                runat="server" /><br />
-        </div>
-
-        <div class="text-center">
-            <button class="btn btn-primary" id="btnEnviar">Enviar</button>
-        </div>
-    </div>
-
     <script>
         var socket;
         var btnEnviar = document.getElementById('btnEnviar');
@@ -53,7 +56,7 @@
             };
 
 
-            btnEnviar.addEventListener('click', function () {
+            btnEnviar.addEventListener('click', function (event) {
 
                 // Evitar que el botón realice su acción predeterminada (enviar formulario)
                 //no pasa con el elemento input
@@ -62,6 +65,8 @@
                 var mensajeAEnviar = document.getElementById('<%= tbEnviados.ClientID %>').value;
                 console.log(mensajeAEnviar);
                 socket.send(mensajeAEnviar);
+
+                document.getElementById('<%= tbEnviados.ClientID %>').value = "";
             });
 
         }
