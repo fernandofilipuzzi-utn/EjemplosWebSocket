@@ -122,7 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
-    <Content Include="docs\encuesta.jpg" />
+    <Content Include="docs\pantallazo.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
